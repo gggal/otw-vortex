@@ -1,4 +1,4 @@
 # otw-vortex
-Playing OverTheWire's Vortex game
+Playing OverTheWire's CTF games
 
-This repo contains my attempt at solving the Vortex challenge and everything I'm learning along the way.
+This repo contains my attempt at solving some OTW challenges and everything I'm learning along the way.

